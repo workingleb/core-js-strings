@@ -507,6 +507,7 @@ function encodeToRot13(/* str */) {
   //   newStr[i].charCodeAt
   // }
   // return;
+  throw new Error('Not implemented');
 }
 
 /**
