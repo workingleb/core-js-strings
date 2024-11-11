@@ -501,13 +501,23 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  // const newStr = str.split('');
-  // for (let i = 0; i <  newStr.length; i += 1) {
-  //   newStr[i].charCodeAt
-  // }
-  // return;
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  return str
+
+    .split('')
+
+    .map((char) => {
+      const code = char.charCodeAt(char);
+
+      if (code < 65 || code > 122) {
+        return String.fromCharCode(code);
+      }
+      if (code < 78 || (code < 110 && code > 96)) {
+        return String.fromCharCode(code + 13);
+      }
+      return String.fromCharCode(code - 13);
+    })
+    .join('');
 }
 
 /**
@@ -534,8 +544,36 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  let num;
+  let sum;
+  if (value.includes('A')) {
+    num = 0;
+  } else if (value.includes('J')) {
+    num = 10;
+  } else if (value.includes('Q')) {
+    num = 11;
+  } else if (value.includes('K')) {
+    num = 12;
+  } else if (value.includes('10')) {
+    num = 9;
+  } else {
+    num = value.charAt(0) - 1;
+  }
+
+  if (value.includes('♣')) {
+    sum = num;
+  }
+  if (value.includes('♦')) {
+    sum = num + 13;
+  }
+  if (value.includes('♥')) {
+    sum = num + 26;
+  }
+  if (value.includes('♠')) {
+    sum = num + 39;
+  }
+  return sum;
 }
 
 module.exports = {
