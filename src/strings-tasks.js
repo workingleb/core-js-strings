@@ -501,12 +501,12 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(str) {
-  const newStr = str.split('');
-  for (let i = 0; i <  newStr.length; i += 1) {
-    newStr[i].charCodeAt
-  }
-  return;
+function encodeToRot13(/* str */) {
+  // const newStr = str.split('');
+  // for (let i = 0; i <  newStr.length; i += 1) {
+  //   newStr[i].charCodeAt
+  // }
+  // return;
 }
 
 /**
